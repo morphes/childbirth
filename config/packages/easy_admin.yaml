@@ -5,10 +5,15 @@ easy_admin:
             class: App\Entity\Users
             list:
                 fields: ['id', 'email', 'roles']
+        Events:
+            class: App\Entity\Event
+            list:
+                fields: ['id', 'title', 'image']
     design:
         brand_color: 'black'
         menu:
           - Users
+          - Events
         assets:
             css:
                 - '/bundles/lp/css/lp.css'
