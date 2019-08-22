@@ -40,21 +40,6 @@ class Users implements UserInterface
     private $hash;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Orders", mappedBy="user_id")
-     */
-    private $orders;
-
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Address", mappedBy="user_id")
-     */
-    private $addresses;
-
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\UserAddress", mappedBy="entity")
-     */
-    private $userAddresses;
-
-    /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $gender;
@@ -154,37 +139,6 @@ class Users implements UserInterface
         // $this->plainPassword = null;
     }
 
-    /**
-     * @return Collection|Orders[]
-     */
-    public function getOrders(): Collection
-    {
-        return $this->orders;
-    }
-
-    public function addOrder(Orders $order): self
-    {
-        if (!$this->orders->contains($order)) {
-            $this->orders[] = $order;
-            $order->setUserId($this);
-        }
-
-        return $this;
-    }
-
-    public function removeOrder(Orders $order): self
-    {
-        if ($this->orders->contains($order)) {
-            $this->orders->removeElement($order);
-            // set the owning side to null (unless already changed)
-            if ($order->getUserId() === $this) {
-                $order->setUserId(null);
-            }
-        }
-
-        return $this;
-    }
-
     public function setHash($hash)
     {
         $this->hash = $hash;
@@ -197,71 +151,9 @@ class Users implements UserInterface
         return $this->hash;
     }
 
-    /**
-     * @return Collection|Address[]
-     */
-    public function getAddresses(): Collection
-    {
-        return $this->addresses;
-    }
-
-    public function addAddress(Address $address): self
-    {
-        if (!$this->addresses->contains($address)) {
-            $this->addresses[] = $address;
-            $address->setUserId($this);
-        }
-
-        return $this;
-    }
-
-    public function removeAddress(Address $address): self
-    {
-        if ($this->addresses->contains($address)) {
-            $this->addresses->removeElement($address);
-            // set the owning side to null (unless already changed)
-            if ($address->getUserId() === $this) {
-                $address->setUserId(null);
-            }
-        }
-
-        return $this;
-    }
-
     public function __toString()
     {
         return self::class;
-    }
-
-    /**
-     * @return Collection|UserAddress[]
-     */
-    public function getUserAddresses(): Collection
-    {
-        return $this->created;
-    }
-
-    public function addUserAddresses(UserAddress $userAddresses): self
-    {
-        if (!$this->userAddresses->contains($userAddresses)) {
-            $this->userAddresses[] = $userAddresses;
-            $userAddresses->setEntity($this);
-        }
-
-        return $this;
-    }
-
-    public function removeUserAddresses(UserAddress $userAddresses): self
-    {
-        if ($this->userAddresses->contains($userAddresses)) {
-            $this->userAddresses->removeElement($userAddresses);
-            // set the owning side to null (unless already changed)
-            if ($userAddresses->getEntity() === $this) {
-                $userAddresses->setEntity(null);
-            }
-        }
-
-        return $this;
     }
 
     public function getGender(): ?string

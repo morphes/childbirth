@@ -1,4 +1,0 @@
-ItemConnection:
-    type: relay-connection
-    config:
-        nodeType: ProductItem!

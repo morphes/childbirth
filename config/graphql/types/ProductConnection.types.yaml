@@ -1,4 +1,0 @@
-ProductConnection:
-    type: relay-connection
-    config:
-        nodeType: Product!

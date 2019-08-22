@@ -1,14 +1,6 @@
 overblog_graphql:
     definitions:
         show_debug_info: true # Debug info is disabled by default
-        builders:
-            args:
-                -
-                    alias: "Pager"
-                    class: "App\\GraphQL\\Args\\Pager"
-                -
-                    alias: "PaginatoringBuilder"
-                    class: "App\\GraphQL\\Args\\PaginatoringBuilder"
         schema:
             query: Query
             mutation: Mutation

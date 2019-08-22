@@ -1,9 +1,0 @@
-Addresses:
-  type: object
-  config:
-    description: "Users Addresses"
-    fields:
-      data:
-       type: "[Address]"
-
-

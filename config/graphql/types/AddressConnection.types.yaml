@@ -1,4 +1,0 @@
-AddressConnection:
-    type: relay-connection
-    config:
-        nodeType: Address!
